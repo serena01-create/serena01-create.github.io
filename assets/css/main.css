@@ -3804,3 +3804,10 @@ input, select, textarea {
 			}
 
 		}
+/* Button Home */
+    ul.actions.special.major {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 50px !important;    /* Aumenta questo numero per allontanarlo di più */
+        margin-bottom: 50px !important; /* Spazio rispetto al footer sotto */
+    }
