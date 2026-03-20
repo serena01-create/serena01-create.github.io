@@ -11,6 +11,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+    /* Centra il contenuto del footer solo in questa pagina */
+    #footer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 4em 2em !important;
+    }
+    #footer section {
+        width: 100% !important;
+        max-width: 600px; /* Limita la larghezza per non farlo sembrare troppo dispersivo */
+        margin: 0 auto !important;
+    }
+    #footer .icons {
+        justify-content: center !important;
+    }
+    #footer .alt {
+        display: inline-block;
+        text-align: left; /* Mantiene le etichette Indirizzo/Cellulare allineate a sinistra internamente */
+    }
+</style>
 	</head>
 	<body class="is-preload">
 
@@ -37,7 +59,7 @@
                             </div>
                     <ul class="actions special major">
                         <li>
-                            <a href="index.html" class="button">Torna alla Home</a>
+                            <a href="javascript:history.back()" class="button">Torna alla Home</a>
                         </li>
                     </ul>
 			<!-- Footer -->
