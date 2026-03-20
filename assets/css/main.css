@@ -105,6 +105,7 @@ input, select, textarea {
 		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #dc9bd3 15%, #5f4d93 85%);
 		background-image: url("images/overlay.png"), linear-gradient(45deg, #dc9bd3 15%, #5f4d93 85%);
 	}
+
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			-moz-animation: none !important;
 			-webkit-animation: none !important;
@@ -118,7 +119,7 @@ input, select, textarea {
 
 /* Type */
 
-	body {
+	body{ 
 		background-color: #935d8c;
 		color: rgba(255, 255, 255, 0.65);
 	}
@@ -2877,116 +2878,9 @@ input, select, textarea {
     border-radius: 2px !important; /* Angoli più netti */
     max-width: 100% !important;
     height: auto !important;
-    }
+}
 
-/* Statistics */
 
-	.statistics {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		width: 100%;
-		margin: 0 0 3em 0;
-		padding: 0;
-		list-style: none;
-		cursor: default;
-	}
-
-		.statistics li {
-			-moz-flex: 1;
-			-webkit-flex: 1;
-			-ms-flex: 1;
-			flex: 1;
-			padding: 1.5em;
-			color: #ffffff;
-			text-align: center;
-		}
-
-			.statistics li.style1 {
-				background-color: #efa8b0;
-			}
-
-			.statistics li.style2 {
-				background-color: #c79cc8;
-			}
-
-			.statistics li.style3 {
-				background-color: #a89cc8;
-			}
-
-			.statistics li.style4 {
-				background-color: #9bb2e1;
-			}
-
-			.statistics li.style5 {
-				background-color: #8cc9f0;
-			}
-
-			.statistics li strong, .statistics li b {
-				display: block;
-				font-size: 2em;
-				line-height: 1.1;
-				color: inherit !important;
-				font-weight: 300;
-				letter-spacing: -0.025em;
-			}
-
-			.statistics li:first-child {
-				border-top-left-radius: 8px;
-				border-bottom-left-radius: 8px;
-			}
-
-			.statistics li:last-child {
-				border-top-right-radius: 8px;
-				border-bottom-right-radius: 8px;
-			}
-
-			.statistics li .icon {
-				display: inline-block;
-			}
-
-				.statistics li .icon:before {
-					font-size: 2.75rem;
-					line-height: 1.3;
-				}
-
-		@media screen and (max-width: 980px) {
-
-			.statistics li strong, .statistics li b {
-				font-size: 1.5em;
-			}
-
-		}
-
-		@media screen and (max-width: 736px) {
-
-			.statistics {
-				display: block;
-				width: 20em;
-				max-width: 100%;
-				margin: 0 auto 2em auto;
-			}
-
-				.statistics li:first-child {
-					border-bottom-left-radius: 0;
-					border-top-right-radius: 8px;
-				}
-
-				.statistics li:last-child {
-					border-top-right-radius: 0;
-					border-bottom-left-radius: 8px;
-				}
-
-				.statistics li .icon:before {
-					font-size: 3.75rem;
-				}
-
-				.statistics li strong, .statistics li b {
-					font-size: 2.5em;
-				}
-
-		}
 
 /* Spotlight */
 
@@ -3810,3 +3704,47 @@ input, select, textarea {
         margin-top: 50px !important;    /* Aumenta questo numero per allontanarlo di più */
         margin-bottom: 50px !important; /* Spazio rispetto al footer sotto */
     }
+
+/* Video */
+    .video-container {
+        display: flex;            
+        justify-content: center;  
+        align-items: center;      
+        min-height: 100vh;        
+        background-color: #000;   
+    }
+/* PhotoGallery */
+.gallery {
+    width: 100%;
+    max-width: 900px; /* Impedisce che diventi gigante */
+    margin: 20px auto; 
+    text-align: center;
+}
+
+.photo {
+    display: none;    /* Nasconde tutto di base */
+    width: 100%;
+    height: 500px;    /* Altezza fissa per coerenza */
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.photo.active {
+    display: block;   /* Appare nel flusso della pagina */
+    animation: fadeIn 0.5s;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Controlli semplici e distanziati */
+.photo-controls {
+    margin-top: 30px; 
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 50px; /* Spazio prima della galleria successiva */
+}
