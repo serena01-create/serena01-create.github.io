@@ -3594,85 +3594,55 @@ input, select, textarea {
 		}
 
 /* Footer */
+#footer {
+    padding: 5em 0 3em 0; /* Riduciamo i padding laterali qui */
+    width: 100%;
+    margin: 0;
+}
 
-	#footer {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		padding: 5em 5em 3em 5em ;
-		width: calc(100% + 2em);
-		margin: 0 0 3em -2em;
-	}
+#footer .inner {
+    display: flex !important; /* Forza il flexbox */
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 5em;
+}
 
-		#footer > * {
-			width: calc(50% - 2em);
-			margin-left: 2em;
-		}
+/* Gestione delle due sezioni principali */
+#footer .inner > section {
+    width: 45% !important; /* Forza la larghezza al 45% per farle stare affiancate */
+    margin-bottom: 2em;
+    display: inline-block;
+    vertical-align: top;
+}
 
-		#footer .copyright {
-			width: 100%;
-			margin: 2.5em 0 2em 0;
-			font-size: 0.8em;
-			text-align: center;
-		}
+/* Il copyright deve stare sotto e occupare tutto lo spazio */
+#footer .copyright {
+    width: 100% !important;
+    text-align: center;
+    margin-top: 3em;
+    padding-top: 3em;
+    border-top: solid 1px rgba(255, 255, 255, 0.1);
+}
 
-		@media screen and (max-width: 1280px) {
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 980px) {
+    #footer .inner {
+        padding: 0 3em;
+    }
+}
 
-			#footer {
-				padding: 4em 4em 2em 4em ;
-			}
-
-		}
-
-		@media screen and (max-width: 980px) {
-
-			#footer {
-				padding: 4em 3em 2em 3em ;
-				display: block;
-				margin: 0 0 3em 0;
-				width: 100%;
-			}
-
-				#footer > * {
-					width: 100%;
-					margin-left: 0;
-					margin-bottom: 3em;
-				}
-
-				#footer .copyright {
-					text-align: left;
-				}
-
-		}
-
-		@media screen and (max-width: 736px) {
-
-			#footer {
-				padding: 3em 2em 1em 2em ;
-			}
-
-		}
-
-		@media screen and (max-width: 480px) {
-
-			#footer {
-				padding: 3em 1.5em 1em 1.5em ;
-			}
-
-		}
-
-		@media screen and (max-width: 480px) {
-
-			#footer {
-				padding: 2.5em 1em 0.5em 1em ;
-			}
-
-		}
+@media screen and (max-width: 736px) {
+    #footer .inner {
+        flex-direction: column !important; /* Solo su mobile tornano incolonnati */
+        padding: 0 2em;
+    }
+    #footer .inner > section {
+        width: 100% !important;
+    }
+}
 
 /* Wrapper */
 
@@ -3730,7 +3700,10 @@ input, select, textarea {
 }
 
 .photo.active {
-    display: block;   /* Appare nel flusso della pagina */
+   display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important; /* Aggiunto per Safari */
+    -webkit-animation: fadeIn 0.5s; /* Prefisso per vecchi Safari */
     animation: fadeIn 0.5s;
 }
 
@@ -3747,4 +3720,178 @@ input, select, textarea {
     justify-content: center;
     gap: 15px;
     padding-bottom: 50px; /* Spazio prima della galleria successiva */
+}
+
+.logo-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem auto; /* Centra il cerchio e dà spazio al testo */
+    border-radius: 50%;         /* Lo rende un cerchio perfetto */
+    overflow: hidden;           /* Taglia l'immagine che esce dai bordi */
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* COLOR BOTTON */
+.button:hover,
+button:hover,
+input[type="submit"]:hover {
+    background-color: #8d82c4 !important; /* Colore viola Stellar */
+    color: #ffffff !important;           /* Testo bianco */
+    border-color: #8d82c4 !important;    /* Bordo coordinato */
+    transform: translateY(-2px);         /* Il tasto si alza leggermente (molto elegante) */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Aggiunge una piccola ombra sotto */
+    transition: all 0.2s ease-in-out;    /* Rende il movimento morbido */
+}
+/* Pulsanti "vuoti" (quelli con solo il bordo) */
+.button.target:hover {
+    background-color: rgba(141, 130, 196, 0.1) !important;
+}
+.button {
+    display: inline-block;
+    transition: all 0.3 s ease; /* Aiuta il pulsante a tornare in posizione morbidamente */
+    z-index: 1;
+    position: relative;
+}
+
+/* --- HEADER INTERATTIVO --- */
+
+/* Centra il pulsante */
+.header-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2em;
+}
+
+#header {
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Header a tutto schermo SOLO nella Home */
+.is-home #header.full-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+/* NASCONDI CONTENUTI: Solo se siamo nella Home e non abbiamo ancora cliccato */
+.is-home #nav, 
+.is-home #main, 
+.is-home #footer {
+    display: none; 
+    opacity: 0;
+}
+
+/* MOSTRA CONTENUTI: Classe usata dal JS al click o presente di default nelle altre pagine */
+.show-content, 
+body:not(.is-home) #nav, 
+body:not(.is-home) #main, 
+body:not(.is-home) #footer {
+    display: block !important;
+    opacity: 1 !important;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- ANIMAZIONI DI ENTRATA (FADE IN UP) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-element {
+    opacity: 0; 
+    animation-name: fadeInUp;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; 
+}
+
+/* --- EFFETTO CASCATA (DELAY) --- */
+#header > .fade-in-element:nth-child(1) { animation-delay: 0.1s; }
+#header > .fade-in-element:nth-child(2) { animation-delay: 0.6s; }
+#header > .fade-in-element:nth-child(3) { animation-delay: 1.1s; }
+#header > .fade-in-element:nth-child(4) { animation-delay: 1.6s; }
+
+/* --- TIP TAP --- */
+/* 1. Il contenitore DEVE avere align-items: center */
+.shoes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* <--- Questo centra l'ombra rispetto alle scarpe */
+    justify-content: center;
+    width: 250px;           
+    margin: 20px auto;      /* Centra il contenitore nella pagina */
+    position: relative;
+}
+
+/* 2. Stato normale dell'immagine */
+.shoes-icon-skill {
+    width: 250px;
+    height: auto;
+    cursor: pointer;
+    display: block;         /* <--- Cambiato da inline-block a block per pulizia */
+    margin: 0 auto;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+/* 3. L'ombra (Ho aggiunto margin: 0 auto per sicurezza totale) */
+.shoes-shadow {
+    width: 120px; 
+    height: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: -12px auto 0 auto; /* <--- Centrata orizzontalmente con 'auto' */
+    filter: blur(5px);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Mostra l'ombra solo quando le scarpe ballano */
+.shoes-icon-skill.dancing + .shoes-shadow {
+    opacity: 1;
+    animation: shadowPulse 0.4s infinite alternate ease-in-out !important;
+}
+
+/* Animazione del ballo */
+.shoes-icon-skill.dancing {
+    animation: dance 0.4s infinite alternate !important;
+}
+
+@keyframes dance {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes shadowPulse {
+    0% { 
+        transform: scale(1); 
+        background: rgba(0, 0, 0, 0.4); /* Più scura a terra */
+    }
+    100% { 
+        transform: scale(0.7); 
+        background: rgba(0, 0, 0, 0.2); /* Si schiarisce ma resta visibile */
+    }
 }
