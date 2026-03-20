@@ -6,126 +6,165 @@
 
 (function($) {
 
-	var	$window = $(window),
-		$body = $('body'),
-		$main = $('#main');
-})
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
+    var $window = $(window),
+        $body = $('body'),
+        $main = $('#main');
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+    // Breakpoints.
+    breakpoints({
+        xlarge:   [ '1281px',  '1680px' ],
+        large:    [ '981px',   '1280px' ],
+        medium:   [ '737px',   '980px'  ],
+        small:    [ '481px',   '736px'  ],
+        xsmall:   [ '361px',   '480px'  ],
+        xxsmall:  [ null,      '360px'  ]
+    })
 
-	// Nav.
-		var $nav = $('#nav');
 
-		if ($nav.length > 0) {
+    // Play initial animations on page load.
+    $window.on('load', function() {
+        window.setTimeout(function() {
+            $body.removeClass('is-preload');
+        }, 100);
+    });
 
-			// Shrink effect.
-				$main
-					.scrollex({
-						mode: 'top',
-						enter: function() {
-							$nav.addClass('alt');
-						},
-						leave: function() {
-							$nav.removeClass('alt');
-						},
-					});
+    // Nav.
+    var $nav = $('#nav');
 
-			// Links.
-				var $nav_a = $nav.find('a');
+    if ($nav.length > 0) {
 
-				$nav_a
-					.scrolly({
-						speed: 1000,
-						offset: function() { return $nav.height(); }
-					})
-					.on('click', function() {
+        // Shrink effect.
+        $main.scrollex({
+            mode: 'top',
+            enter: function() { $nav.addClass('alt'); },
+            leave: function() { $nav.removeClass('alt'); },
+        });
 
-						var $this = $(this);
+        // Links.
+        var $nav_a = $nav.find('a');
 
-						// External link? Bail.
-							if ($this.attr('href').charAt(0) != '#')
-								return;
+        $nav_a.scrolly({
+            speed: 1000,
+            offset: function() { return $nav.height(); }
+        })
+        .on('click', function() {
+            var $this = $(this);
+            if ($this.attr('href').charAt(0) != '#') return;
+            $nav_a.removeClass('active').removeClass('active-locked');
+            $this.addClass('active').addClass('active-locked');
+        })
+        .each(function() {
+            var $this = $(this),
+                id = $this.attr('href'),
+                $section = $(id);
 
-						// Deactivate all links.
-							$nav_a
-								.removeClass('active')
-								.removeClass('active-locked');
+            if ($section.length < 1) return;
 
-						// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-							$this
-								.addClass('active')
-								.addClass('active-locked');
+            $section.scrollex({
+                mode: 'middle',
+                initialize: function() {
+                    if (browser.canUse('transition')) $section.addClass('inactive');
+                },
+                enter: function() {
+                    $section.removeClass('inactive');
+                    if ($nav_a.filter('.active-locked').length == 0) {
+                        $nav_a.removeClass('active');
+                        $this.addClass('active');
+                    }
+                    else if ($this.hasClass('active-locked'))
+                        $this.removeClass('active-locked');
+                }
+            });
+        });
+    }
 
-					})
-					.each(function() {
+    
+    // --- EFFETTO NEON PULSANTI (FUORI DAL BLOCCO PRECEDENTE) ---
+    $('.button').on('mousemove', function(e) {
+        var rect = e.target.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        $(this).css({
+            'background': `radial-gradient(circle at ${x}px ${y}px, #a399d6, #8d82c4)`
+        });
+    }).on('mouseleave', function() {
+        $(this).css('background', '');
+    });
 
-						var	$this = $(this),
-							id = $this.attr('href'),
-							$section = $(id);
+// --- HEADER INTERATTIVO --- 
+   $(document).ready(function() {
+    $('#discover-more').on('click', function(e) {
+        e.preventDefault(); // Evita il salto immediato
 
-						// No section for this link? Bail.
-							if ($section.length < 1)
-								return;
+        // 1. Fa sparire il pulsante
+        $(this).fadeOut(300);
 
-						// Scrollex.
-							$section.scrollex({
-								mode: 'middle',
-								initialize: function() {
+        // 2. Rimpicciolisce l'header (togliendo la classe full-screen)
+        $('#header').removeClass('full-screen');
 
-									// Deactivate section.
-										if (browser.canUse('transition'))
-											$section.addClass('inactive');
+        // 3. Fa apparire Menu, Contenuto e Footer
+        $('#nav, #main, #footer').addClass('show-content');
 
-								},
-								enter: function() {
-
-									// Activate section.
-										$section.removeClass('inactive');
-
-									// No locked links? Deactivate all links and activate this section's one.
-										if ($nav_a.filter('.active-locked').length == 0) {
-
-											$nav_a.removeClass('active');
-											$this.addClass('active');
-
-										}
-
-									// Otherwise, if this section's link is the one that's locked, unlock it.
-										else if ($this.hasClass('active-locked'))
-											$this.removeClass('active-locked');
-
-								}
-							});
-
-					});
-
-		}
-
-	// Scrolly.
-	$('.scrolly').scrolly({
-    speed: 2000
+        // 4. Scroll dolce verso il contenuto bianco
+        setTimeout(function() {
+            $('html, body').animate({
+                scrollTop: $("#main").offset().top
+            }, 800);
+        }, 100);
+    });
 });
 
-$(function() {
+// --- TIP TAP
+(function($) {
+    var tapInterval;
+    var sound = document.getElementById('tap-sound');
+
+    // Funzione che attiva tutto
+    function startDancing() {
+        $('.shoes-icon-skill').addClass('dancing');
+        if (sound) {
+			sound.playbackRate = 0.6;
+            sound.play();
+            if (!tapInterval) {
+                tapInterval = setInterval(function() {
+                    sound.currentTime = 0;
+                    sound.play();
+                }, 800);
+            }
+        }
+    }
+
+    // Funzione che ferma tutto
+    function stopDancing() {
+        $('.shoes-icon-skill').removeClass('dancing');
+        if (tapInterval) { clearInterval(tapInterval); tapInterval = null; }
+        if (sound) { sound.pause(); sound.currentTime = 0; }
+    }
+
+    // Applichiamo gli eventi
+    $(document).on('mouseenter', '.shoes-icon-skill', startDancing);
+    $(document).on('mouseleave', '.shoes-icon-skill', stopDancing);
+
+})(jQuery);
+
+// Scrolly.
+    $('.scrolly').scrolly({
+        speed: 2000
+    });
+
+    // --- SEZIONE GALLERIE ---
     function moveGallery($container, direction) {
+        // Cerchiamo le foto SOLO dentro questa specifica galleria ($container)
         var $photos = $container.find('.photo');
         var $active = $container.find('.photo.active');
-        var index = $photos.index($active);
+        
+        // Se per qualche motivo non c'è una foto active, impostiamo la prima
+        if ($active.length === 0) {
+            $photos.first().addClass('active');
+            $active = $container.find('.photo.active');
+        }
 
+        var index = $photos.index($active);
         $active.removeClass('active');
 
         if (direction === 'next') {
@@ -135,28 +174,35 @@ $(function() {
         }
 
         $photos.eq(index).addClass('active');
-        console.log("Cambiata foto a: " + index + " nella galleria: " + $container.attr('id'));
     }
 
-    // Gestione CLICK (Cerca le CLASSI .btn-next e .btn-prev)
+    // Gestione CLICK tasto AVANTI
     $(document).on('click', '.btn-next', function(e) {
         e.preventDefault();
-        var $parent = $(this).closest('.gallery-container');
+        // Risale al genitore con classe .gallery più vicino
+        var $parent = $(this).closest('.gallery'); 
         moveGallery($parent, 'next');
     });
 
+    // Gestione CLICK tasto INDIETRO
     $(document).on('click', '.btn-prev', function(e) {
         e.preventDefault();
-        var $parent = $(this).closest('.gallery-container');
+        var $parent = $(this).closest('.gallery');
         moveGallery($parent, 'prev');
     });
 
-    // Autoplay
-    setInterval(function() { 
-        if($('#gallery1').length) moveGallery($('#gallery1'), 'next'); 
-    }, 7500);
-    
-    setInterval(function() { 
-        if($('#gallery2').length) moveGallery($('#gallery2'), 'next'); 
-    }, 7500);
-});
+    // AUTOPLAY: Sfoglia tutte le gallerie ogni 5 secondi
+    var galleryInterval = setInterval(function() { 
+        $('.gallery').each(function() {
+            var $thisGallery = $(this);
+            // Muove solo se la galleria è visibile o esiste
+            if ($thisGallery.length > 0) {
+                moveGallery($thisGallery, 'next');
+            }
+        });
+    }, 5000); // 5 secondi per renderlo più dinamico
+
+
+})(jQuery); 
+
+
