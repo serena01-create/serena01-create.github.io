@@ -31,7 +31,7 @@
 								<h2>Il Regno del Disordine</h2>
 								<p>Uno spettacolo distopico che ti trascina nella follia di un regno oscuro e grottesco. Un loop senza fine: quadri che prendono vita, cappelli parlanti... due giovani innamorati di un potere ideale, e una donna pronta a sfidare la maledizione del tempo per amore. 
 									E se fossimo tutti rinchiusi in questa stessa storia che si ripete da sempre? Forse senza saperlo, o senza ricordarlo. Perché nel regno è vietato ricordare.</p>
-									<div id="gallery1" class="gallery-container">
+									<div id="gallery1" class="gallery">
                                         <img src="images/foto01.jpg" class="photo active">
                                         <img src="images/foto02.jpg" class="photo">
                                         <img src="images/foto03.jpg" class="photo">
@@ -44,17 +44,15 @@
 										<img src="images/foto10.jpg" class="photo">
 										<img src="images/foto11.jpg" class="photo">
 										<img src="images/foto12.jpg" class="photo">
-                                    </div>
-                                    <div class="carousel-container">
                                         <div class="photo-controls">
-                                            <button id="btn-prev" class="button">Indietro</button>
-                                            <button id="btn-next" class="button">Avanti</button>
+                                            <button type="button" class="btn-prev button">Indietro</button>
+                                            <button type="button" class="btn-next button">Avanti</button>
                                         </div>
                                     </div>
 								<h2>Alice nel paese delle meraviglie - Il musical</h2>
 								<p>Se sarete curiosi come Alice e la seguirete fin dentro la tana del coniglio bianco, assisterete a un vero e proprio trionfo di fantasia. In un Paese delle Meraviglie in cui i bruchi borbottano e i gatti parlano, anche un Cappellaio Matto non vi sembrerà poi tanto folle. Se anche riusciste a non perdere la testa in un mondo completamente al contrario, state in guardia: con la Regina di Cuori nei paraggi, nessuna testa è al sicuro! 
 									Un grande classico della letteratura in un nuovo, sorprendente musical! Un cast di 12 eccezionali performer farà rivivere a grandi e bambini le emozioni e le continue sorprese che solo il Paese delle Meraviglie sa regalare! Le musiche coinvolgenti, i costumi accurati e le scenografie immersive faranno da cornice ad uno spettacolo indimenticabile!</p>
-							    <div id="gallery2" class="gallery-container">
+							        <div id="gallery2" class="gallery">
                                         <img src="images/foto13.jpg" class="photo active">
                                         <img src="images/foto14.jpg" class="photo">
                                         <img src="images/foto15.jpg" class="photo">
@@ -67,11 +65,9 @@
 										<img src="images/foto22.jpg" class="photo">
 										<img src="images/foto23.jpg" class="photo">
 										<img src="images" class="photo">
-                                    </div>
-                                    <div class="carousel-container">
-                                        <div class="photo-controls">
-                                            <button id="btn-prev" class="button">Indietro</button>
-                                            <button id="btn-next" class="button">Avanti</button>
+									    <div class="photo-controls">
+                                            <button type="button" class="btn-prev button">Indietro</button>
+                                            <button type="button" class="btn-next button">Avanti</button>
                                         </div>
                                     </div>
 								<h2>Carpe Diem</h2>
@@ -83,12 +79,12 @@ Un dramma intenso e profondamente umano che mette in scena la sottile e dolorosa
 					</div>
                     <ul class="actions special major">
                         <li>
-                            <a href="index.html" class="button">Torna alla Home</a>
+                            <a href="javascript:history.back()" class="button">Torna alla Home</a>
                         </li>
                     </ul>
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
+						<div class="inner split"><section>
 							<h2>Ulteriori informazioni</h2>
 							<p>Per avere ulteriori informazioni tecniche sul mio operato, tramite il pulsante sottostante potrete accedere direttamente al mio CV artistico, tenuto in costante aggiornamento.</p>
 							<ul class="actions">
@@ -111,6 +107,7 @@ Un dramma intenso e profondamente umano che mette in scena la sottile e dolorosa
 								<li><a href="https://www.instagram.com/s3renere/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
 							</ul>
 						</section>
+						</div>
 						<p class="copyright">&copy; Autorizzo al trattamento dei dati personali contenuti nel mio curriculum vitae in base art. 13 del D. Lgs.</p>
 					</footer>
 
