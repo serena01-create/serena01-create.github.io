@@ -12,26 +12,30 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload is-home">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" class="alt">
-		
-						<svg width="100" height="100">
-							<defs>
-								<clipPath id="circleView">
-									<circle cx="50" cy="50" r="50" />
-								</clipPath>
-							</defs>
-							<image xlink:href="images/logo.svg" width="100" height="100" clip-path="url(#circleView)" />
-						</svg>
-						<h1>Ciao!</h1>
-						<p>Sono Serena e sono una performer di arti performative. Scopri il mio mondo!<br />
-						</p>
-					</header>
+					<header id="header" class="full-screen">
+                        <svg width="100" height="100" class="fade-in-element">
+                            <defs>
+                                <clipPath id="circleView">
+                                   <circle cx="50" cy="50" r="50" />
+                                </clipPath>
+                            </defs>
+                            <image xlink:href="images/logo.svg" width="100" height="100" clip-path="url(#circleView)" />
+                        </svg>
+
+                        <h1 class="fade-in-element">Ciao!</h1>
+
+                        <p class="fade-in-element">Sono Serena e sono una performer di arti performative. Scopri il mio mondo!</p>
+
+                        <div class="header-button-wrapper fade-in-element">
+                            <a href="#main" class="button primary" id="discover-more">Scopri di più</a>
+                        </div>
+                    </header>
 
 				<!-- Nav -->
 					<nav id="nav">
@@ -96,7 +100,7 @@
 									</ul>
 								</footer>
 							</section>
-						
+
 						<!-- Skills -->
 							<section id="second" class="main special">
 								<header class="major">
@@ -107,10 +111,17 @@
 									Non ho particolari doti da danzatrice, fatta eccezione per il tiptap, stile che studio fin da piccola e che
 									è senza dubbio una peculiarità che mi distingue da molti altri performer su scala nazionale.</p>
 								</header>
-								<p class="content">Non farti ingannare dalle apparenze! Nonostante io sia diplomata in Musical Theatre, posso facilmente spaziare in diversi generi. Dalla commedia al dramma, ma anche nel mondo cinematografico. I miei studi molto ampi e completi mi permettono di spaziare su vari fronti del mondo dell'arte. Potrei recitare in un dramma struggente oggi e cantare ad un concerto dedicato ai migliori cartoni animati degli anni 2000 domani, con tante voci diverse e tra un passo di tip tap e l'altro!</p>
-								<footer class="major">
+								<p class="content">Non farti ingannare dalle apparenze! Nonostante io sia diplomata in Musical Theatre, posso facilmente spaziare in diversi generi. Dalla commedia al dramma, ma anche nel mondo cinematografico. I miei studi molto ampi e completi mi permettono di spaziare su vari fronti del mondo dell'arte. Potrei recitare in un dramma struggente oggi e cantare ad un concerto dedicato ai migliori cartoni animati degli anni 2000 domani, con tante voci diverse e tra un passo di tip tap e l'altro! </p>
+								<div class="tap-animation-container">
+                                    <img src="images/scarpette-tap.png" class="shoes-icon-skill" alt="Scarpette Tip Tap">
+                                    <div class="shoes-shadow"></div>
+                                </div>
+
+                            <audio id="tap-sound" src="sound/audio-tap.mp3" preload="auto"></audio>
+                            
+	                            <footer class="major">
 									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
+										<li><a href="skills.html" class="button">Learn More</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -133,7 +144,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
+						<div class="inner split"> <section>
 							<h2>Ulteriori informazioni</h2>
 							<p>Per avere ulteriori informazioni tecniche sul mio operato, tramite il pulsante sottostante potrete accedere direttamente al mio CV artistico, tenuto in costante aggiornamento.</p>
 							<ul class="actions">
@@ -156,9 +167,9 @@
 								<li><a href="https://www.instagram.com/s3renere/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
 							</ul>
 						</section>
+						</div>
 						<p class="copyright">&copy; Autorizzo al trattamento dei dati personali contenuti nel mio curriculum vitae in base art. 13 del D. Lgs.</p>
 					</footer>
-
 
 			</div>
 
