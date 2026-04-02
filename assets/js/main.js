@@ -145,15 +145,13 @@
         }
     }
 
-    // Gestione dell'evento al click/tocco
-    $(document).on('click touchstart', '.shoes-icon-skill', function(e) {
-        // Se è un tocco mobile, evitiamo che il browser faccia altro
-        if (e.type === 'touchstart') {
-            // Non bloccare se vuoi che il click standard funzioni ancora, 
-            // ma aiuta a prevenire il menu contestuale
-        }
+    // GESTIONE UNIFICATA
+    $(document).on('click touchend', '.shoes-icon-skill', function(e) {
+        // Blocca la propagazione e il comportamento di default
+        // Questo evita che il browser "clicchi due volte" (touch + click)
+        e.preventDefault();
+        e.stopPropagation();
 
-        // Se stanno già ballando, fermale. Altrimenti, falle partire.
         if ($(this).hasClass('dancing')) {
             stopDancing();
         } else {
@@ -161,9 +159,10 @@
         }
     });
 
-    // Opzionale: mantieni mouseleave solo per PC se vuoi che si fermi quando esci col mouse
+    // Per PC: Fermiamo se il mouse esce (opzionale)
+    // Aggiungiamo un controllo per non attivarlo su mobile
     $(document).on('mouseleave', '.shoes-icon-skill', function() {
-        if (!('ontouchstart' in window)) { // Solo se NON è un dispositivo touch
+        if (window.matchMedia("(min-width: 1024px)").matches) {
             stopDancing();
         }
     });
