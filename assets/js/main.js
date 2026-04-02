@@ -119,11 +119,10 @@
     var tapInterval;
     var sound = document.getElementById('tap-sound');
 
-    // Funzione che attiva tutto
     function startDancing() {
         $('.shoes-icon-skill').addClass('dancing');
         if (sound) {
-			sound.playbackRate = 0.6;
+            sound.playbackRate = 0.6;
             sound.play();
             if (!tapInterval) {
                 tapInterval = setInterval(function() {
@@ -134,16 +133,40 @@
         }
     }
 
-    // Funzione che ferma tutto
     function stopDancing() {
         $('.shoes-icon-skill').removeClass('dancing');
-        if (tapInterval) { clearInterval(tapInterval); tapInterval = null; }
-        if (sound) { sound.pause(); sound.currentTime = 0; }
+        if (tapInterval) { 
+            clearInterval(tapInterval); 
+            tapInterval = null; 
+        }
+        if (sound) { 
+            sound.pause(); 
+            sound.currentTime = 0; 
+        }
     }
 
-    // Applichiamo gli eventi
-    $(document).on('mouseenter', '.shoes-icon-skill', startDancing);
-    $(document).on('mouseleave', '.shoes-icon-skill', stopDancing);
+    // Gestione dell'evento al click/tocco
+    $(document).on('click touchstart', '.shoes-icon-skill', function(e) {
+        // Se è un tocco mobile, evitiamo che il browser faccia altro
+        if (e.type === 'touchstart') {
+            // Non bloccare se vuoi che il click standard funzioni ancora, 
+            // ma aiuta a prevenire il menu contestuale
+        }
+
+        // Se stanno già ballando, fermale. Altrimenti, falle partire.
+        if ($(this).hasClass('dancing')) {
+            stopDancing();
+        } else {
+            startDancing();
+        }
+    });
+
+    // Opzionale: mantieni mouseleave solo per PC se vuoi che si fermi quando esci col mouse
+    $(document).on('mouseleave', '.shoes-icon-skill', function() {
+        if (!('ontouchstart' in window)) { // Solo se NON è un dispositivo touch
+            stopDancing();
+        }
+    });
 
 })(jQuery);
 
