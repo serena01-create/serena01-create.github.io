@@ -3903,3 +3903,33 @@ body:not(.is-home) #footer {
     user-select: none;                        /* Impedisce di selezionare l'icona come testo */
     cursor: pointer;
 }
+
+/* SOLUZIONE UNIVERSALE PER MOBILE */
+@media (max-width: 600px) {
+    /* 1. Forza il contenitore principale a non avere margini laterali */
+    header, nav, [class*="container"], [class*="nav"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Forza la barra bianca a occupare tutto lo spazio */
+    nav ul, .nav-menu, header div {
+        display: flex !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important; /* Toglie gli angoli arrotondati che creano i "buchi" */
+        justify-content: space-around !important; /* Distribuisce i tasti */
+        box-sizing: border-box !important;
+    }
+    
+    /* 3. Se il problema è un overflow orizzontale del sito */
+    body, html {
+        overflow-x: hidden !important;
+        position: relative;
+    }
+}
