@@ -3913,7 +3913,7 @@ body:not(.is-home) #footer {
         flex-wrap: nowrap !important; /* Forza tutto su una riga */
         justify-content: center !important; /* Li tiene uniti al centro */
         gap: 8px !important; /* Spazio piccolo tra i tasti */
-        width: 99vw !important; /* Larghezza esatta dello schermo */
+        width: 100vw !important; /* Larghezza esatta dello schermo */
         max-width: 100vw !important;
         box-sizing: border-box !important; /* Include il padding nel calcolo della larghezza */
         padding: 10px 5px !important;
