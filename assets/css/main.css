@@ -3895,3 +3895,11 @@ body:not(.is-home) #footer {
         background: rgba(0, 0, 0, 0.2); /* Si schiarisce ma resta visibile */
     }
 }
+
+/* Not-save su smartphone */
+.shoes-icon-skill {
+    -webkit-tap-highlight-color: transparent; /* Rimuove il rettangolo azzurro al tocco */
+    -webkit-touch-callout: none;              /* Impedisce il menu "Salva immagine" */
+    user-select: none;                        /* Impedisce di selezionare l'icona come testo */
+    cursor: pointer;
+}
