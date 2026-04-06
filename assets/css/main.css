@@ -3906,8 +3906,14 @@ body:not(.is-home) #footer {
 
 /* NO MENÙ RAPIDO SU MOBILE */
 /* Nasconde l'elemento quando lo schermo è più piccolo di 736px */
-@media screen and (max-width: 736px) {
-    #menu-rapido {
+@media screen and (max-width: 980px) {
+    #nav {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
     }
 }
