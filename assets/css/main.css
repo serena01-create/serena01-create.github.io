@@ -3736,6 +3736,37 @@ input, select, textarea {
     object-fit: cover;
 }
 
+/* Gestione galleria per mantenere il formato orizzontale */
+.gallery {
+    position: relative;
+    width: 100%;
+    /* Definisce un rapporto d'aspetto orizzontale (es. 16:9) */
+    aspect-ratio: 16 / 9; 
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 2em;
+    background: #222; /* Sfondo scuro mentre carica */
+}
+
+.gallery img.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene le proporzioni tagliando leggermente i bordi se necessario */
+    display: none;
+}
+
+.gallery img.photo.active {
+    display: block;
+}
+
+/* Forza la dimensione anche su mobile */
+@media screen and (max-width: 736px) {
+    .gallery {
+        aspect-ratio: 16 / 9 !important; /* Mantiene il rettangolo orizzontale */
+        height: auto !important;
+    }
+}
+
 /* COLOR BOTTON */
 .button:hover,
 button:hover,
