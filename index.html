@@ -20,7 +20,7 @@
 
 				<!-- Header -->
 					<header id="header" class="full-screen">
-                        <svg width="100" height="100" class="fade-in-element">
+                        <svg width="100" height="100" class="fade-in-element" tabindex="-1" focusable="false" role="presentation" aria-hidden="true">
                             <defs>
                                 <clipPath id="circleView">
                                    <circle cx="50" cy="50" r="50" />
@@ -34,25 +34,25 @@
                         <p class="fade-in-element">Sono Serena e sono una performer di arti performative. Scopri il mio mondo!</p>
 
                         <div class="header-button-wrapper fade-in-element">
-                            <a href="#main" class="button primary" id="discover-more">Scopri di più</a>
+                            <a href="#intro" role="button" class="button primary" id="discover-more" tabindex="1" aria-label="Salta la navigazione e vai ai miei studi">Scopri di più</a>
                         </div>
                     </header>
 
 				<!-- Nav -->
 					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">Formazione</a></li>
-							<li><a href="#first">Spettacoli</a></li>
-							<li><a href="#second">Skills</a></li>
-							<li><a href="#cta">Lavora con me</a></li>
-						</ul>
+						<ul role="menubar">
+							<li><a href="#intro" class="active" tabindex="0" role="menuitem" aria-current="page">Formazione</a></li>
+                            <li><a href="#first" tabindex="0" role="menuitem">Spettacoli</a></li>
+                            <li><a href="#second" tabindex="0" role="menuitem">Skills</a></li>
+                            <li><a href="#cta" tabindex="0" role="menuitem">Lavora con me</a></li>
+                        </ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
 						<!-- Formazione -->
-							<section id="intro" class="main">
+							<section id="intro" class="main" tabindex="-1" style="outline:none;">
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
@@ -66,10 +66,10 @@
 										continua, e presto acquisirò il Livello 1 e 2 del master "Estill Voice Training", al fine
 										di perfezionare le mie qualità canore.</p>
 										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn More</a></li>
+											<li><a href="generic.html" role="button" id="btn-formazione" class="button" tabindex="0" aria-label="Approfondisci la mia formazione e i miei studi">Scopri di più</a></li>
 										</ul>
 									</div>
-									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+									<span class="image"><img src="images/pic01.jpg" alt="Foto di Serena Rosaria Marchese a busto intero" /></span>
 								</div>
 							</section>
 
@@ -80,24 +80,30 @@
 								</header>
 								<ul class="photolist">
 									<li>
-										<class="photolist" style="display: block; text-align: center;"> <img src="images/LOCANDINA1.jpg" alt="" width="300" height="370"/>
+										<div style="display: block; text-align: center;"> 
+                                            <img src="images/LOCANDINA1.jpg" alt="Locandina dello spettacolo Il Regno del Disordine" width="300" height="370"/>
+                                        </div>
 										<h3>Il Regno del Disordine</h3>
 										<p>Dramma diretto da Sonia Bongiovanni e Diego Grachot, prodotto da OurVoice in collaborazione con Extasia (2025)</p>
 									</li>
 									<li>
-										<class="photolist" style="display: block; text-align: center;"> <img src="images/LOCANDINA2.jpg" alt="" width="300" height="370" />
+										<div style="display: block; text-align: center;"> 
+                                            <img src="images/LOCANDINA2.jpg" alt="Locandina dello spettacolo Alice nel paese delle meraviglie" width="300" height="370" />
+                                        </div>
 										<h3>Alice nel paese delle meraviglie - il Musical</h3>
 										<p>Musical originale, nella versione italiana, diretto da Marzia Molinelli (2026)</p>
 									</li>
 									<li>
-										<class="photolist" style="display: block; text-align: center;"> <img src="images/LOCANDINA3.jpg" alt="" width="300" height="370"/>
+										<div style="display: block; text-align: center;"> 
+                                            <img src="images/LOCANDINA3.jpg" alt="Locandina dello spettacolo Carpe Diem" width="300" height="370"/>
+                                        </div>
 										<h3>Carpe Diem</h3>
 										<p>Dramma in atto unico scritto e diretto da Carlo Teresi (2026)</p>
 									</li>
 								</ul>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="spettacoli.html" class="button">Learn More</a></li>
+										<li><a href="spettacoli.html" role="button" id="btn-spettacoli" class="button" tabindex="0" aria-current="Visualizza tutte le gallerie dei miei spettacoli">Scopri di più</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -114,7 +120,7 @@
 								</header>
 								<p class="content">Non farti ingannare dalle apparenze! Nonostante io sia diplomata in Musical Theatre, posso facilmente spaziare in diversi generi. Dalla commedia al dramma, ma anche nel mondo cinematografico. I miei studi molto ampi e completi mi permettono di spaziare su vari fronti del mondo dell'arte. Potrei recitare in un dramma struggente oggi e cantare ad un concerto dedicato ai migliori cartoni animati degli anni 2000 domani, con tante voci diverse e tra un passo di tip tap e l'altro! </p>
 								<div class="tap-animation-container">
-                                    <img src="images/scarpette-tap.png" class="shoes-icon-skill" alt="Scarpette Tip Tap">
+                                    <img src="images/scarpette-tap.png" class="shoes-icon-skill" alt="Illustrazione scarpette Tip Tap">
                                     <div class="shoes-shadow"></div>
                                 </div>
 
@@ -122,7 +128,7 @@
                             
 	                            <footer class="major">
 									<ul class="actions special">
-										<li><a href="skills.html" class="button">Learn More</a></li>
+										<li><a href="skills.html" id="btn-skills" class="button" tabindex="0" aria-label="Approfondisci le mie competenze e abilità artistiche">Scopri di più</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -135,8 +141,8 @@
 								</header>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="mailto:serenamarchese18@gmail.com" class="button primary">Lavora con me</a></li>
-										<li><a href="Curriculum2026.pdf" download="Curriculum2026.pdf" class="button">Scarica CV</a></li>
+										<li><a href="mailto:serenamarchese18@gmail.com" id="btn-mail" class="button primary" tabindex="0" aria-label="Inviami una mail per collaborazioni lavorative">Lavora con me</a></li>
+										<li><a href="Curriculum2026.pdf" download="Curriculum2026.pdf" id="btn-cvpdf" class="button" tabindex="0" aria-label="Scarica il mio Curriculum Vitae in formato PDF">Scarica CV</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -149,7 +155,7 @@
 							<h2>Ulteriori informazioni</h2>
 							<p>Per avere ulteriori informazioni tecniche sul mio operato, tramite il pulsante sottostante potrete accedere direttamente al mio CV artistico, tenuto in costante aggiornamento.</p>
 							<ul class="actions">
-								<li><a href="cvartistico.html" class="button">Curriculum Vitae</a></li>
+								<li><a href="cvartistico.html" id="btn-cvpdf" class="button" tabindex="0" aria-label="Accedi al mio Curriculum Vitae">Curriculum Vitae</a></li>
 							</ul>
 						</section>
 						<section>
@@ -160,13 +166,13 @@
 								<dt>Cellulare</dt>
 								<dd>(+39) 327 328 0163</dd>
 								<dt>Email</dt>
-								<dd><a href="#">serenamarchese18@gmail.com</a></dd>
+								<dd><a href="#" id="btn-cv2026" class="button" tabindex="0" aria-label="Visualizza online il mio Curriculum Vitae">serenamarchese18@gmail.com</a></dd>
 							</dl>
 							<ul class="icons">
-								<li><a href="https://x.com/SerenaMarchese8" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.facebook.com/SerenaMarchese882/" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-								<li><a href="https://www.instagram.com/s3renere/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-							</ul>
+                                <li><a href="https://x.com/SerenaMarchese8" id="btn-twitter" class="icon brands fa-twitter alt" tabindex="0" aria-label="Seguimi su Twitter (X)"><span class="label">Twitter</span></a></li>
+                                <li><a href="https://www.facebook.com/SerenaMarchese882/" id="btn-facebook" class="icon brands fa-facebook-f alt" tabindex="0" aria-label="Seguimi su Facebook"><span class="label">Facebook</span></a></li>
+                                <li><a href="https://www.instagram.com/s3renere/" id="btn-instagram" class="icon brands fa-instagram alt" tabindex="0" aria-label="Seguimi su Instagram"><span class="label">Instagram</span></a></li>
+                            </ul>
 						</section>
 						</div>
 						<p class="copyright">&copy; Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003, modificato dal D.Lgs. 101/2018, e dell'art. 13 del GDPR (Regolamento UE 2016/679) ai fini della ricerca e selezione del personale.</p>
