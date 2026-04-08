@@ -121,7 +121,7 @@ input, select, textarea {
 
 	body{ 
 		background-color: #935d8c;
-		color: rgba(255, 255, 255, 0.65);
+		color: rgb(255, 255, 255);
 	}
 
 	body, input, select, textarea {
@@ -3249,24 +3249,24 @@ input, select, textarea {
 
 	#main {
 		background-color: #ffffff;
-		color: #636363;
+		color: #010101;
 		border-radius: 0.25em;
 	}
 
 		#main input, #main select, #main textarea {
-			color: #636363;
+			color: #010101;
 		}
 
 		#main a:hover {
-			color: #636363;
+			color: #010101;
 		}
 
 		#main strong, #main b {
-			color: #636363;
+			color: #010101;
 		}
 
 		#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
-			color: #636363;
+			color: #010101;
 		}
 
 		#main blockquote {
@@ -3949,3 +3949,16 @@ input, select, textarea {
 			overflow: hidden !important;   
 		}
 	}
+/*ACCESSIBILITÀ*/
+    /* Forza la visualizzazione del focus ovunque */
+        :focus {
+            outline: 4px solid #8cced7 !important; /* Colore acceso per il test */
+            outline-offset: 4px !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+    /* Rendi il pulsante dell'header sempre visibile per la tastiera */
+        #header .button:focus {
+            box-shadow: 0 0 0 4px #8cced7 !important;
+        }
