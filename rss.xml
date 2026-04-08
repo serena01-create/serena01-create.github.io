@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>Le Mie Photo Gallerie - Nome Sito</title>
-    <link>https://www.tuosito.it/galleria.html</link>
+    <title>I miei spettacoli - serena01-create</title>
+    <link>https://www.serena01-create.github.io/spettacoli.html</link>
     <description>Resta aggiornato sugli ultimi spettacoli e le nuove gallerie fotografiche.</description>
     <language>it-it</language>
 
     <item>
       <title>Nuova Galleria: Il Regno del Disordine</title>
-      <link>https://www.tuosito.it/galleria.html#gallery1</link>
+      <link>https://www.serena01-create.github.io/spettacoli.html#gallery2</link>
       <description>Aggiunte 12 nuove foto dello spettacolo distopico Il Regno del Disordine.</description>
       <pubDate>Wed, 08 Apr 2026 10:00:00 +0100</pubDate>
     </item>
