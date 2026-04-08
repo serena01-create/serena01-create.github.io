@@ -226,27 +226,27 @@
     }, 5000); // 5 secondi per renderlo più dinamico
 
 // Gestione del tasto RSS
-const rssButton = document.getElementById('rssBtn');
-if (rssButton) {
-    rssButton.addEventListener('click', function() {
+$(document).on('click', '#rssBtn', function(e) {
+        e.preventDefault();
+        
         const rssUrl = "https://serena01-create.github.io/rss.xml";
-        const msg = document.getElementById('copyMessage');
-        const btn = this;
+        const $btn = $(this);
+        const $msg = $('#copyMessage');
 
-        navigator.clipboard.writeText(rssUrl).then(() => {
-            btn.innerText = "Link Copiato!";
-            msg.style.display = "block";
+        navigator.clipboard.writeText(rssUrl).then(function() {
+            // Feedback sul pulsante
+            $btn.text("Link Copiato!");
+            // Feedback testuale con animazione fluida
+            $msg.fadeIn(400);
 
-            setTimeout(() => {
-                btn.innerHTML = '<i class="icon fa-rss"></i> Copia link aggiornamenti';
-                msg.style.display = "none";
-            }, 3000);
-        }).catch(err => {
-            // Se la copia automatica fallisce (es. browser vecchi), apre il file
+            setTimeout(function() {
+                $btn.html('<i class="icon fa-rss"></i> Copia link aggiornamenti');
+                $msg.fadeOut(400);
+            }, 4000);
+        }).catch(function() {
             window.open(rssUrl, '_blank');
         });
     });
-}
 
 })(jQuery); 
 
