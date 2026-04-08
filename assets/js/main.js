@@ -225,6 +225,28 @@
         });
     }, 5000); // 5 secondi per renderlo più dinamico
 
+// Gestione del tasto RSS
+const rssButton = document.getElementById('rssBtn');
+if (rssButton) {
+    rssButton.addEventListener('click', function() {
+        const rssUrl = "https://serena01-create.github.io/rss.xml";
+        const msg = document.getElementById('copyMessage');
+        const btn = this;
+
+        navigator.clipboard.writeText(rssUrl).then(() => {
+            btn.innerText = "Link Copiato!";
+            msg.style.display = "block";
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="icon fa-rss"></i> Copia link aggiornamenti';
+                msg.style.display = "none";
+            }, 3000);
+        }).catch(err => {
+            // Se la copia automatica fallisce (es. browser vecchi), apre il file
+            window.open(rssUrl, '_blank');
+        });
+    });
+}
 
 })(jQuery); 
 
