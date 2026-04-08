@@ -201,15 +201,16 @@
     // Gestione CLICK tasto AVANTI
     $(document).on('click', '.btn-next', function(e) {
         e.preventDefault();
-        // Risale al genitore con classe .gallery più vicino
-        var $parent = $(this).closest('.gallery'); 
+        // .prev('.gallery') cerca l'elemento .gallery che sta SUBITO PRIMA del blocco pulsanti
+        var $parent = $(this).parent().prev('.gallery'); 
         moveGallery($parent, 'next');
     });
 
     // Gestione CLICK tasto INDIETRO
     $(document).on('click', '.btn-prev', function(e) {
         e.preventDefault();
-        var $parent = $(this).closest('.gallery');
+        // .prev('.gallery') cerca l'elemento .gallery che sta SUBITO PRIMA del blocco pulsanti
+        var $parent = $(this).parent().prev('.gallery');
         moveGallery($parent, 'prev');
     });
 
